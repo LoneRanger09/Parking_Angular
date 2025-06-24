@@ -24,7 +24,7 @@
 .parking-spot {
   width: 100px;
   height: 120px;
-  margin: 8px;
+  margin: 4px;
   border-radius: 10px;
   text-align: center;
   padding: 10px;
@@ -56,30 +56,24 @@
   font-size: 12px;
 }
 .parking-layout {
-  gap: 15px;
-  margin: 20px;
   display: grid;
-  grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); ;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));  /* flexible boxes */
+  gap: 37px;
+  padding: 16px;
+  box-sizing: border-box;
+  
 }
 div{
 unicode-bidi:isolate ;
 }
 .parking-spot {
-  position: relative;
-  padding: 15px 10px;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 12px;
   text-align: center;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
   border: 2px solid transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90px;
-  width: 100px;
+  transition: all 0.3s ease-in-out;
 }
 .parking-spot.available {
   background-color: #d1e7dd;
@@ -129,4 +123,78 @@ unicode-bidi:isolate ;
   background-color: #e9ecef;
   color: #adb5bd;
   cursor: not-allowed;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+.slot {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid;
+  text-align: center;
+  font-weight: bold;
+}
+
+.slot.available {
+  background-color: #e0f9e0;
+  border-color: #1a8f1a;
+}
+
+.slot.occupied {
+  background-color: #ffe0e0;
+  border-color: #d12020;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.plate {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #555;
+}
+.parking-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px);
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.parking-spot {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  margin-left: 4px;
+}
+
+.available {
+  background-color: #e0f7e9;
+  border-color: green;
+}
+
+.occupied {
+  background-color: #ffe5e5;
+  border-color: red;
+}
+
+.spot-number {
+  font-size: 16px;
+}
+
+.spot-status {
+  font-size: 13px;
+  color: #555;
+}
+
+.plate {
+  font-size: 12px;
+  color: #888;
 }

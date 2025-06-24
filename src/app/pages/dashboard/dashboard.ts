@@ -5,12 +5,11 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
-
   siteList = [
     { siteId: 1, siteName: 'Site A' },
     { siteId: 2, siteName: 'Site B' }
@@ -18,15 +17,13 @@ export class Dashboard implements OnInit {
 
   buildingList: any[] = [];
   floorList: any[] = [];
-  parkingSpotarray: number[] = [];
+  parkingSpotarray: any[] = [];
 
   siteId: number = 0;
   buildingId: number = 0;
   floorId: number = 0;
 
-  ngOnInit(): void {
-    // Sites are already hardcoded
-  }
+  ngOnInit(): void {}
 
   getBuilding() {
     if (this.siteId == 1) {
@@ -48,12 +45,12 @@ export class Dashboard implements OnInit {
   getfloorByBuilding() {
     if (this.buildingId == 101 || this.buildingId == 201) {
       this.floorList = [
-        { floorId: 1, floorName: 'Ground Floor', totalSpots: 5 },
-        { floorId: 2, floorName: 'First Floor', totalSpots: 6 }
+        { floorId: 1, floorName: 'Ground Floor', totalSpots: 15 },
+        { floorId: 2, floorName: 'First Floor', totalSpots: 9 }
       ];
     } else if (this.buildingId === 102 || this.buildingId === 202) {
       this.floorList = [
-        { floorId: 3, floorName: 'Second Floor', totalSpots: 4 },
+        { floorId: 3, floorName: 'Second Floor', totalSpots: 6 },
         { floorId: 4, floorName: 'Third Floor', totalSpots: 3 }
       ];
     }
@@ -64,6 +61,18 @@ export class Dashboard implements OnInit {
   getFloorSelect() {
     const selectedFloor = this.floorList.find(f => f.floorId === this.floorId);
     const spots = selectedFloor?.totalSpots || 0;
-    this.parkingSpotarray = Array.from({ length: spots }, (_, i) => i + 1);
+
+    // Generate dummy slot data
+    this.parkingSpotarray = Array.from({ length: spots }, (_, i) => {
+      const slotNumber = i + 1;
+      const slotName = `P${slotNumber}`;
+      const isOccupied = slotNumber % 2 === 0; // dummy logic
+      return {
+        id: slotNumber,
+        name: slotName,
+        status: isOccupied ? 'occupied' : 'available',
+        plate: isOccupied ? `XX ${slotNumber} ZZ 1234` : null
+      };
+    });
   }
 }
