@@ -21,4 +21,112 @@
 .status-dot.occupied{
     background-color: #dc3545;
 }
+.parking-spot {
+  width: 100px;
+  height: 120px;
+  margin: 8px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.parking-spot.available {
+  background-color: #d1e7dd;
+  border: 2px solid #198754;
+  color: #198754;
+}
+
+.parking-spot.occupied {
+  background-color: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #dc3545;
+}
+
+.parking-spot .icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.spot-status {
+  font-size: 12px;
+}
+.parking-layout {
+  gap: 15px;
+  margin: 20px;
+  display: grid;
+  grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); ;
+  flex-wrap: wrap;
+}
+div{
+unicode-bidi:isolate ;
+}
+.parking-spot {
+  position: relative;
+  padding: 15px 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  width: 100px;
+}
+.parking-spot.available {
+  background-color: #d1e7dd;
+  border-color: #198754;
+  color: #198754;
+}
+
+.parking-spot.occupied {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+.parking-spot .icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.parking-spot .slot-number {
+  font-size: 16px;
+}
+
+.parking-spot .spot-status {
+  font-size: 13px;
+}
+/* Add this to your dashboard.css */
+
+/* Style the select dropdowns inside .input-group for better appearance */
+.input-group select {
+  min-width: 160px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  margin-right: 8px;
+  font-size: 15px;
+  background-color: #fff;
+  color: #495057;
+  transition: border-color 0.2s;
+}
+
+.input-group select:focus {
+  border-color: #86b7fe;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+.input-group select:disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+  cursor: not-allowed;
+}

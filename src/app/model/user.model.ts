@@ -18,3 +18,12 @@ export interface IUserModel{
   mobileNo: string
   extraId: number
 }
+export interface ResponseModel {
+  message: string
+  result: boolean
+  data: any
+}
+export interface ISite {
+siteId: number;
+  siteName: string;
+}
