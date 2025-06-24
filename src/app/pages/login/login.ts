@@ -22,10 +22,15 @@ export class LoginComponent {
   };
 
   onLogin() {
+    // Check if email and password are provided
     this.userSrv.loginUser(this.loginObj).subscribe(
       (res: IUserModel) => {
         alert("User Found..Navigate inside");
+        // Store user data in localStorage for persistence
         localStorage.setItem("parkUser", JSON.stringify(res));
+        // Store user data in the service for later use
+        this.userSrv.loggedUserdata = res;
+        // Navigate to the dashboard after successful login 
         this.router.navigate(['/dashboard']);
       },
       (error: any) => {

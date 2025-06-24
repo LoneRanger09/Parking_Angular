@@ -8,8 +8,18 @@ import { IUserModel } from '../model/user.model';
 })
 export class UserService {
 
-  constructor(private https: HttpClient) { }
+  loggedUserdata! : IUserModel;
+
+
+  constructor(private https: HttpClient) { 
+    const loggeddata = localStorage.getItem("parkUser");
+    if(loggeddata !== null) {
+      this.loggedUserdata = JSON.parse(loggeddata as string);
+    }
+  }
   loginUser(obj: any) :Observable<IUserModel> {
     return this.https.post<IUserModel>('https://api.freeprojectapi.com/api/SmartParking/login', obj);
+
+    
   }
 }
